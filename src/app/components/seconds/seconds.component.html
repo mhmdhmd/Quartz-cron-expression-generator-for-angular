@@ -3,7 +3,7 @@
     <input
       class="form-check-input"
       type="radio"
-      name="option"
+      name="every"
       id="option1"
       value="every"
       [(ngModel)]="secondsService.secondModel.type"
@@ -11,14 +11,14 @@
       checked
     />
     <label class="form-check-label" for="option1">
-      Every seconds
+      Every second
     </label>
   </div>
   <div class="form-check">
     <input
       class="form-check-input"
       type="radio"
-      name="option"
+      name="custom"
       id="option2"
       value="custom"
       [(ngModel)]="secondsService.secondModel.type"
@@ -35,14 +35,14 @@
               value=""
               id="flexCheckDefault"
               [disabled]="!isCustom"
-              [(ngModel)]="secondsService.secondModel.repeat"
+              [(ngModel)]="secondsService.secondModel.custom.repeat.isRepeat"
             />
             <div class="form-check-label">
                 <span>Every </span>
                 <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="secondsService.secondModel.repeatInterval"
+                    [(ngModel)]="secondsService.secondModel.custom.repeat.repeatInterval"
                   >
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -110,7 +110,7 @@
                 <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="secondsService.secondModel.repeatStartAt"
+                    [(ngModel)]="secondsService.secondModel.custom.repeat.repeatStartAt"
                   >
                     <option value="00">00</option>
                     <option value="01">01</option>
@@ -183,7 +183,7 @@
               value=""
               id="flexCheckChecked"
               [disabled]="!isCustom"
-              [(ngModel)]="secondsService.secondModel.specific"
+              [(ngModel)]="secondsService.secondModel.custom.specific.isSpecific"
             />
             <label class="form-check-label" for="flexCheckChecked">
               Specific second(s) (choose one or many)
@@ -191,7 +191,7 @@
                 [placeholder]="'select second(s)'"
                 [settings]="dropdownSettings"
                 [data]="dropdownList"
-                [(ngModel)]="secondsService.secondModel.specificSeconds"
+                [(ngModel)]="secondsService.secondModel.custom.specific.specificValues"
                 (onSelect)="onItemSelect($event)"
                 (onSelectAll)="onSelectAll($event)">
               </ng-multiselect-dropdown>
@@ -204,14 +204,14 @@
               value=""
               id="flexCheckDefault"
               [disabled]="!isCustom"
-              [(ngModel)]="secondsService.secondModel.between"
+              [(ngModel)]="secondsService.secondModel.custom.between.isBetween"
             />
             <div class="form-check-label">
                 <span>Every second between second </span>
                 <label>
                   <select
                   class="form-select form-select-sm"
-                  [(ngModel)]="secondsService.secondModel.betweenFrom"
+                  [(ngModel)]="secondsService.secondModel.custom.between.betweenFrom"
                 >
                   <option value="00">00</option>
                   <option value="01">01</option>
@@ -279,7 +279,7 @@
                 <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="secondsService.secondModel.betweenTo"
+                    [(ngModel)]="secondsService.secondModel.custom.between.betweenTo"
                   >
                     <option value="00">00</option>
                     <option value="01">01</option>

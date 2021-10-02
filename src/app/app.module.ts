@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { SecondsService } from './components/seconds/seconds.service';
 import { MinutesService } from './components/minutes/minutes.service';
 import { HoursService } from './components/hours/hours.service';
+import { DayService } from './components/day/day.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { HoursService } from './components/hours/hours.service';
     FormsModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [SecondsService, MinutesService, HoursService],
+  providers: [SecondsService, MinutesService, HoursService, DayService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

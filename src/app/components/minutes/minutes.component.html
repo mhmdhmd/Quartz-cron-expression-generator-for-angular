@@ -11,7 +11,7 @@
         checked
       />
       <label class="form-check-label" for="option1">
-        Every minutes
+        Every minute
       </label>
     </div>
     <div class="form-check">
@@ -35,14 +35,14 @@
                 value=""
                 id="flexCheckDefault"
                 [disabled]="!isCustom"
-                [(ngModel)]="minutesService.minuteModel.repeat"
+                [(ngModel)]="minutesService.minuteModel.custom.repeat.isRepeat"
               />
               <div class="form-check-label">
                   <span>Every </span>
                   <label>
                       <select
                       class="form-select form-select-sm"
-                      [(ngModel)]="minutesService.minuteModel.repeatInterval"
+                      [(ngModel)]="minutesService.minuteModel.custom.repeat.repeatInterval"
                     >
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -110,7 +110,7 @@
                   <label>
                       <select
                       class="form-select form-select-sm"
-                      [(ngModel)]="minutesService.minuteModel.repeatStartAt"
+                      [(ngModel)]="minutesService.minuteModel.custom.repeat.repeatStartAt"
                     >
                       <option value="00">00</option>
                       <option value="01">01</option>
@@ -183,7 +183,7 @@
                 value=""
                 id="flexCheckChecked"
                 [disabled]="!isCustom"
-                [(ngModel)]="minutesService.minuteModel.specific"
+                [(ngModel)]="minutesService.minuteModel.custom.specific.isSpecific"
               />
               <label class="form-check-label" for="flexCheckChecked">
                 Specific minute(s) (choose one or many)
@@ -191,7 +191,7 @@
                   [placeholder]="'select minute(s)'"
                   [settings]="dropdownSettings"
                   [data]="dropdownList"
-                  [(ngModel)]="minutesService.minuteModel.specificMinutes">
+                  [(ngModel)]="minutesService.minuteModel.custom.specific.specificValues">
                 </ng-multiselect-dropdown>
               </label>
             </div>
@@ -202,14 +202,14 @@
                 value=""
                 id="flexCheckDefault"
                 [disabled]="!isCustom"
-                [(ngModel)]="minutesService.minuteModel.between"
+                [(ngModel)]="minutesService.minuteModel.custom.between.isBetween"
               />
               <div class="form-check-label">
                   <span>Every minute between minute </span>
                   <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="minutesService.minuteModel.betweenFrom"
+                    [(ngModel)]="minutesService.minuteModel.custom.between.betweenFrom"
                   >
                     <option value="00">00</option>
                     <option value="01">01</option>
@@ -277,7 +277,7 @@
                   <label>
                       <select
                       class="form-select form-select-sm"
-                      [(ngModel)]="minutesService.minuteModel.betweenTo"
+                      [(ngModel)]="minutesService.minuteModel.custom.between.betweenTo"
                     >
                       <option value="00">00</option>
                       <option value="01">01</option>

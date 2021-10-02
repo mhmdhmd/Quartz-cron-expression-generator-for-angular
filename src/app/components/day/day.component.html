@@ -1,1 +1,387 @@
-<p>day works!</p>
+<div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="option"
+        id="option1"
+        value="every"
+        [(ngModel)]="dayService.dayModel.type"
+        (change)="onTypeSelect($event)"
+        checked
+      />
+      <label class="form-check-label" for="option1">
+        Every day
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="option"
+        id="option2"
+        value="boweek"
+        [(ngModel)]="dayService.dayModel.type"
+        (change)="onTypeSelect($event)"
+      />
+      <label class="form-check-label" for="option2">
+        Base on week
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-check">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="boweek"
+                    id="boweekLast"
+                    value="last"
+                    [(ngModel)]="dayService.dayModel.baseOnWeek.type"
+                    (change)="onTypeSelect($event)"/>
+                <label for="boweekLast" class="form-check-label">
+                    <span>On the last </span>
+                    <label>
+                        <select
+                        class="form-select form-select-sm"
+                        [(ngModel)]="dayService.dayModel.baseOnWeek.last.day"
+                      >
+                        <option value="1">Sunday</option>
+                        <option value="2">Monday</option>
+                        <option value="3">Tuesday</option>
+                        <option value="4">Wednesday</option>
+                        <option value="5">Thursday</option>
+                        <option value="6">Friday</option>
+                        <option value="7">Saturday</option>
+                      </select>
+                    </label>
+                    <span> of the month</span> 
+                </label>
+            </div>
+            <div class="form-check">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="boweek"
+                    id="boweekCustom"
+                    value="custom"
+                    [(ngModel)]="dayService.dayModel.baseOnWeek.type"
+                    (change)="onTypeSelect($event)"/>
+                <label for="boweekLast" class="form-check-label">
+                    Custom
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-check mt-1">
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  value=""
+                                  id="flexCheckDefault"
+                                  [(ngModel)]="dayService.dayModel.baseOnWeek.custom.repeat.isRepeat"
+                                />
+                                <div class="form-check-label">
+                                    <span>Every </span>
+                                    <label>
+                                        <select
+                                        class="form-select form-select-sm"
+                                        [(ngModel)]="dayService.dayModel.baseOnWeek.custom.repeat.interval"
+                                      >
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                      </select>
+                                    </label>
+                                    <span> day(s) starting on </span>
+                                    <label>
+                                        <select
+                                        class="form-select form-select-sm"
+                                        [(ngModel)]="dayService.dayModel.baseOnWeek.custom.repeat.startAt"
+                                      >
+                                        <option value="1">Sunday</option>
+                                        <option value="2">Monday</option>
+                                        <option value="3">Tuesday</option>
+                                        <option value="4">Wednesday</option>
+                                        <option value="5">Thursday</option>
+                                        <option value="6">Friday</option>
+                                        <option value="7">Saturday</option>
+                                      </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  value=""
+                                  id="flexCheckChecked"
+                                  [(ngModel)]="dayService.dayModel.baseOnWeek.custom.specific.isSpecefic"
+                                />
+                                <label class="form-check-label" for="flexCheckChecked">
+                                  Specific day(s) of week (choose one or many)
+                                  <ng-multiselect-dropdown
+                                    [placeholder]="'select day(s)'"
+                                    [settings]="dropdownSettings"
+                                    [data]="boWeekDropDownList"
+                                    [(ngModel)]="dayService.dayModel.baseOnWeek.custom.specific.values">
+                                  </ng-multiselect-dropdown>
+                                </label>
+                            </div>
+                            <div class="form-check mt-1">
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  value=""
+                                  id="flexCheckDefault"
+                                  [(ngModel)]="dayService.dayModel.baseOnWeek.custom.dayOfMonth.isDayOfMonth"
+                                />
+                                <div class="form-check-label">
+                                    <span>On the </span>
+                                    <label>
+                                        <select
+                                        class="form-select form-select-sm"
+                                        [(ngModel)]="dayService.dayModel.baseOnWeek.custom.dayOfMonth.Xst"
+                                      >
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                      </select>
+                                    </label>
+                                    <span>st </span>
+                                    <label>
+                                        <select
+                                        class="form-select form-select-sm"
+                                        [(ngModel)]="dayService.dayModel.baseOnWeek.custom.dayOfMonth.day"
+                                      >
+                                        <option value="1">Sunday</option>
+                                        <option value="2">Monday</option>
+                                        <option value="3">Tuesday</option>
+                                        <option value="4">Wednesday</option>
+                                        <option value="5">Thursday</option>
+                                        <option value="6">Friday</option>
+                                        <option value="7">Saturday</option>
+                                      </select>
+                                    </label>
+                                    <span> of month</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+    <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="option"
+          id="option3"
+          value="bomonth"
+          [(ngModel)]="dayService.dayModel.type"
+          (change)="onTypeSelect($event)"
+        />
+        <label class="form-check-label" for="option2">
+          Base on Month
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-check">
+                  <input
+                      class="form-check-input"
+                      type="radio"
+                      name="bomonth"
+                      id="bomonthLast"
+                      value="last"
+                      [(ngModel)]="dayService.dayModel.baseOnMonth.type"
+                      (change)="onTypeSelect($event)"/>
+                  <label for="bomonthLast" class="form-check-label">
+                      On the Last day of the month 
+                  </label>
+              </div>
+              <div class="form-check">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="bomonth"
+                    id="bomonthLast"
+                    value="before"
+                    [(ngModel)]="dayService.dayModel.baseOnMonth.type"
+                    (change)="onTypeSelect($event)"/>
+                <label for="bomonthLast" class="form-check-label">
+                    <label>
+                        <select
+                        class="form-select form-select-sm"
+                        [(ngModel)]="dayService.dayModel.baseOnMonth.before"
+                      >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                      </select>
+                    </label>
+                    <span> day(s) before the end of the month</span>
+                </label>
+            </div>
+              <div class="form-check">
+                  <input
+                      class="form-check-input"
+                      type="radio"
+                      name="bomonth"
+                      id="bomonthCustom"
+                      value="custom"
+                      [(ngModel)]="dayService.dayModel.baseOnMonth.type"
+                      (change)="onTypeSelect($event)"/>
+                  <label for="bomonthCustom" class="form-check-label">
+                      Custom
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="form-check mt-1">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value=""
+                                    id="flexCheckDefault"
+                                    [(ngModel)]="dayService.dayModel.baseOnMonth.custom.repeat.isRepeat"
+                                  />
+                                  <div class="form-check-label">
+                                      <span>Every </span>
+                                      <label>
+                                        <select
+                                        class="form-select form-select-sm"
+                                        [(ngModel)]="dayService.dayModel.baseOnMonth.custom.repeat.interval"
+                                      >
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+                                      </select>
+                                    </label>
+                                      <span> day(s) starting on the </span>
+                                      <label>
+                                        <select
+                                        class="form-select form-select-sm"
+                                        [(ngModel)]="dayService.dayModel.baseOnMonth.custom.repeat.startAt"
+                                      >
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+                                      </select>
+                                    </label>
+                                      <span>st of the month</span>
+                                  </div>
+                              </div>
+                              <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value=""
+                                    id="flexCheckChecked"
+                                    [(ngModel)]="dayService.dayModel.baseOnMonth.custom.specific.isSpecefic"
+                                  />
+                                  <label class="form-check-label" for="flexCheckChecked">
+                                    Specific day(s) of month (choose one or many)
+                                    <ng-multiselect-dropdown
+                                      [placeholder]="'select day(s)'"
+                                      [settings]="dropdownSettings"
+                                      [data]="boMonthDropDownList"
+                                      [(ngModel)]="dayService.dayModel.baseOnMonth.custom.specific.values">
+                                    </ng-multiselect-dropdown>
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                  </label>
+              </div>
+            </div>
+          </div>
+        </label>
+      </div>
+</div>
+  

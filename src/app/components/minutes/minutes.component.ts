@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { Type } from '../shared.model';
 import { MinutesService } from './minutes.service';
 
 @Component({
@@ -95,6 +96,6 @@ export class MinutesComponent implements OnInit {
   }
 
   getTypeState(){
-    return this.minutesService.minuteModel.type === "every"? false: true;
+    return this.minutesService.minuteModel.type === Type.Every? false: true;
   }
 }
