@@ -6,15 +6,15 @@ export class Year{
 }
 
 export class Repeat extends sharedRepeat{
-    repeatStartAt: number = (new Date()).getFullYear();
+    repeatStartAt = (new Date()).getFullYear();
 }
 
 export class Between extends sharedBetween{
-    betweenFrom: number = (new Date()).getFullYear();
-    betweenTo: number = (new Date()).getFullYear();
+    betweenFrom = (new Date()).getFullYear();
+    betweenTo = (new Date()).getFullYear();
 }
 
 export class Custom extends sharedCustom{
-    repeat: Repeat = new Repeat();
-    between: Between = new Between();
+    repeat = new Repeat();
+    between = new Between();
 }
