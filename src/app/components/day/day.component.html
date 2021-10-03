@@ -46,13 +46,7 @@
                         [(ngModel)]="dayService.dayModel.baseOnWeek.last.day"
                         [disabled]="!isBoWeek || isBoWeekCustom"
                       >
-                        <option value="1">Sunday</option>
-                        <option value="2">Monday</option>
-                        <option value="3">Tuesday</option>
-                        <option value="4">Wednesday</option>
-                        <option value="5">Thursday</option>
-                        <option value="6">Friday</option>
-                        <option value="7">Saturday</option>
+                        <option *ngFor="let day of daysList; let i=index" [value]="i+1">{{day}}</option>
                       </select>
                     </label>
                     <span> of the month</span> 
@@ -88,13 +82,7 @@
                                         class="form-select form-select-sm"
                                         [(ngModel)]="dayService.dayModel.baseOnWeek.custom.repeat.interval"
                                       >
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
+                                        <option *ngFor="let day of daysList;let i=index" [value]="i+1">{{i+1}}</option>
                                       </select>
                                     </label>
                                     <span> day(s) starting on </span>
@@ -103,13 +91,7 @@
                                         class="form-select form-select-sm"
                                         [(ngModel)]="dayService.dayModel.baseOnWeek.custom.repeat.startAt"
                                       >
-                                        <option value="1">Sunday</option>
-                                        <option value="2">Monday</option>
-                                        <option value="3">Tuesday</option>
-                                        <option value="4">Wednesday</option>
-                                        <option value="5">Thursday</option>
-                                        <option value="6">Friday</option>
-                                        <option value="7">Saturday</option>
+                                        <option *ngFor="let day of daysList; let i=index" [value]="i+1">{{day}}</option>
                                       </select>
                                     </label>
                                 </div>
@@ -149,11 +131,7 @@
                                         class="form-select form-select-sm"
                                         [(ngModel)]="dayService.dayModel.baseOnWeek.custom.dayOfMonth.Xst"
                                       >
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
+                                        <option *ngFor="let num of daysIndexInMonth" [value]="num">{{num}}</option>
                                       </select>
                                     </label>
                                     <span>st </span>
@@ -162,13 +140,7 @@
                                         class="form-select form-select-sm"
                                         [(ngModel)]="dayService.dayModel.baseOnWeek.custom.dayOfMonth.day"
                                       >
-                                        <option value="1">Sunday</option>
-                                        <option value="2">Monday</option>
-                                        <option value="3">Tuesday</option>
-                                        <option value="4">Wednesday</option>
-                                        <option value="5">Thursday</option>
-                                        <option value="6">Friday</option>
-                                        <option value="7">Saturday</option>
+                                        <option *ngFor="let day of daysList; let i=index" [value]="i+1">{{day}}</option>
                                       </select>
                                     </label>
                                     <span> of month</span>
@@ -227,37 +199,7 @@
                         [(ngModel)]="dayService.dayModel.baseOnMonth.before"
                         [disabled]="!isBoMonth || !isBoMonthBefore"
                       >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
+                        <option *ngFor="let num of zeroTo30" [value]="num+1">{{num+1}}</option>
                       </select>
                     </label>
                     <span> day(s) before the end of the month</span>
@@ -293,37 +235,7 @@
                                         class="form-select form-select-sm"
                                         [(ngModel)]="dayService.dayModel.baseOnMonth.custom.repeat.interval"
                                       >
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
+                                        <option *ngFor="let num of zeroTo30" [value]="num+1">{{num+1}}</option>
                                       </select>
                                     </label>
                                       <span> day(s) starting on the </span>
@@ -332,37 +244,7 @@
                                         class="form-select form-select-sm"
                                         [(ngModel)]="dayService.dayModel.baseOnMonth.custom.repeat.startAt"
                                       >
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
+                                        <option *ngFor="let num of zeroTo30" [value]="num+1">{{num+1}}</option>
                                       </select>
                                     </label>
                                       <span>st of the month</span>
@@ -394,6 +276,6 @@
             </div>
           </div>
         </label>
-      </div>
+    </div>
 </div>
   

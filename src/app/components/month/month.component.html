@@ -44,18 +44,7 @@
                       class="form-select form-select-sm"
                       [(ngModel)]="monthService.monthModel.custom.repeat.repeatInterval"
                     >
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                      <option value="11">11</option>
-                      <option value="12">12</option>
+                      <option *ngFor="let month of monthsList; let i = index" [value]="i+1">{{i+1}}</option>
                     </select>
                   </label>
                   <span> month(s) starting at month </span>
@@ -64,18 +53,7 @@
                       class="form-select form-select-sm"
                       [(ngModel)]="monthService.monthModel.custom.repeat.repeatStartAt"
                     >
-                      <option value="00">January</option>
-                      <option value="01">February</option>
-                      <option value="02">March</option>
-                      <option value="03">April</option>
-                      <option value="04">May</option>
-                      <option value="05">June</option>
-                      <option value="06">July</option>
-                      <option value="07">August</option>
-                      <option value="08">September</option>
-                      <option value="09">October</option>
-                      <option value="10">November</option>
-                      <option value="11">December</option>
+                      <option *ngFor="let month of monthsList; let i = index" [value]="i">{{month}}</option>
                     </select>
                   </label>
               </div>
@@ -115,18 +93,7 @@
                     class="form-select form-select-sm"
                     [(ngModel)]="monthService.monthModel.custom.between.betweenFrom"
                   >
-                    <option value="00">January</option>
-                    <option value="01">February</option>
-                    <option value="02">March</option>
-                    <option value="03">April</option>
-                    <option value="04">May</option>
-                    <option value="05">June</option>
-                    <option value="06">July</option>
-                    <option value="07">August</option>
-                    <option value="08">September</option>
-                    <option value="09">October</option>
-                    <option value="10">November</option>
-                    <option value="11">December</option>
+                    <option *ngFor="let month of monthsList; let i = index" [value]="i">{{month}}</option>
                   </select>
                 </label>
                 <span> and month </span>
@@ -135,18 +102,7 @@
                     class="form-select form-select-sm"
                     [(ngModel)]="monthService.monthModel.custom.between.betweenTo"
                   >
-                    <option value="00">January</option>
-                    <option value="01">February</option>
-                    <option value="02">March</option>
-                    <option value="03">April</option>
-                    <option value="04">May</option>
-                    <option value="05">June</option>
-                    <option value="06">July</option>
-                    <option value="07">August</option>
-                    <option value="08">September</option>
-                    <option value="09">October</option>
-                    <option value="10">November</option>
-                    <option value="11">December</option>
+                    <option *ngFor="let month of monthsList; let i = index" [value]="i">{{month}}</option>
                   </select>
                 </label>
               </div>

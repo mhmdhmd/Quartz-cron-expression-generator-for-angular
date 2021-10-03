@@ -14,35 +14,15 @@ export class HoursComponent implements OnInit {
 
   dropdownList: {}[] = [];
   dropdownSettings : IDropdownSettings = {};
+  public zeroTo23: number[] = [];
 
   isCustom: boolean = false;
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 0, item_text: '00' },
-      { item_id: 1, item_text: '01' },
-      { item_id: 2, item_text: '02' },
-      { item_id: 3, item_text: '03' },
-      { item_id: 4, item_text: '04' },
-      { item_id: 5, item_text: '05' },
-      { item_id: 6, item_text: '06' },
-      { item_id: 7, item_text: '07' },
-      { item_id: 8, item_text: '08' },
-      { item_id: 9, item_text: '09' },
-      { item_id: 10, item_text: '10' },
-      { item_id: 11, item_text: '11' },
-      { item_id: 12, item_text: '12' },
-      { item_id: 13, item_text: '13' },
-      { item_id: 14, item_text: '14' },
-      { item_id: 15, item_text: '15' },
-      { item_id: 16, item_text: '16' },
-      { item_id: 17, item_text: '17' },
-      { item_id: 18, item_text: '18' },
-      { item_id: 19, item_text: '19' },
-      { item_id: 20, item_text: '20' },
-      { item_id: 21, item_text: '21' },
-      { item_id: 22, item_text: '22' },
-      { item_id: 23, item_text: '23' }
-    ];
+    for(let i=0;i<24;i++){
+      this.zeroTo23[i] = i;
+      this.dropdownList[i] = { item_id: i, item_text: i };
+    }
+
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',

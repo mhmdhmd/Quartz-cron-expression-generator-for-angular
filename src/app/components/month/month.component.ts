@@ -14,23 +14,16 @@ export class MonthComponent implements OnInit {
 
   dropdownList: {}[] = [];
   dropdownSettings : IDropdownSettings = {};
+  public monthsList: string[] = [];
 
   isCustom: boolean = false;
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'January' },
-      { item_id: 2, item_text: 'February' },
-      { item_id: 3, item_text: 'March' },
-      { item_id: 4, item_text: 'April' },
-      { item_id: 5, item_text: 'May' },
-      { item_id: 6, item_text: 'June' },
-      { item_id: 7, item_text: 'July' },
-      { item_id: 8, item_text: 'August' },
-      { item_id: 9, item_text: 'September' },
-      { item_id: 10, item_text: 'October' },
-      { item_id: 11, item_text: 'November' },
-      { item_id: 12, item_text: 'December' },
-    ];
+    this.monthsList = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    for(const [i,month] of this.monthsList.entries()){
+      this.dropdownList[i] = { item_id: i+1, item_text: month };
+    }
+
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',

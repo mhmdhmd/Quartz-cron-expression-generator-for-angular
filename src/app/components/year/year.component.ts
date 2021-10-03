@@ -14,16 +14,15 @@ export class YearComponent implements OnInit {
 
   dropdownList: {}[] = [];
   dropdownSettings : IDropdownSettings = {};
-  public yearList: number[] = [];
+  public zeroTo99: number[] = [];
 
   isCustom: boolean = false;
   ngOnInit() {
-    var currentYear: number = (new Date()).getFullYear();
 
     for(let i=0; i<100; i++){
-      this.dropdownList[i] = {item_id: currentYear, item_text: currentYear.toString()};
-      this.yearList[i]=currentYear;
-      currentYear++;
+      var year = this.getYearByOffset(i);
+      this.dropdownList[i] = {item_id: year, item_text: year.toString()};
+      this.zeroTo99[i] = i;
     }
 
     this.dropdownSettings = {
@@ -44,5 +43,10 @@ export class YearComponent implements OnInit {
 
   getTypeState(){
     return this.yearService.yearModel.type === Type.Every? false: true;
+  }
+
+  getYearByOffset(offset: number){
+    var currentYear: number = (new Date()).getFullYear();
+    return currentYear+offset;
   }
 }

@@ -6,12 +6,12 @@ export class Minutes{
 }
 
 export class Repeat extends sharedRepeat{
-    repeatStartAt: string = "00";
+    repeatStartAt: number = 0;
 }
 
 export class Between extends sharedBetween{
-    betweenFrom: string = "00";
-    betweenTo: string = "00";
+    betweenFrom: number = 0;
+    betweenTo: number = 0;
 }
 
 export class Custom extends sharedCustom{
