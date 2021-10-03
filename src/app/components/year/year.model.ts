@@ -1,18 +1,17 @@
 import { Custom as sharedCustom, Type, Repeat as sharedRepeat, Between as sharedBetween } from "../shared.model";
 
-
-export class Hours{
+export class Year{
     type: Type = Type.Every;
     custom: Custom = new Custom();
 }
 
 export class Repeat extends sharedRepeat{
-    repeatStartAt: string = "00";
+    repeatStartAt: number = (new Date()).getFullYear();
 }
 
 export class Between extends sharedBetween{
-    betweenFrom: string = "00";
-    betweenTo: string = "00";
+    betweenFrom: number = (new Date()).getFullYear();
+    betweenTo: number = (new Date()).getFullYear();
 }
 
 export class Custom extends sharedCustom{

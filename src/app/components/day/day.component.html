@@ -36,13 +36,15 @@
                     id="boweekLast"
                     value="last"
                     [(ngModel)]="dayService.dayModel.baseOnWeek.type"
-                    (change)="onTypeSelect($event)"/>
+                    (change)="onTypeSelect($event)"
+                    [disabled]="!isBoWeek"/>
                 <label for="boweekLast" class="form-check-label">
                     <span>On the last </span>
                     <label>
                         <select
                         class="form-select form-select-sm"
                         [(ngModel)]="dayService.dayModel.baseOnWeek.last.day"
+                        [disabled]="!isBoWeek || isBoWeekCustom"
                       >
                         <option value="1">Sunday</option>
                         <option value="2">Monday</option>
@@ -64,7 +66,8 @@
                     id="boweekCustom"
                     value="custom"
                     [(ngModel)]="dayService.dayModel.baseOnWeek.type"
-                    (change)="onTypeSelect($event)"/>
+                    (change)="onTypeSelect($event)"
+                    [disabled]="!isBoWeek"/>
                 <label for="boweekLast" class="form-check-label">
                     Custom
                     <div class="row">
@@ -76,6 +79,7 @@
                                   value=""
                                   id="flexCheckDefault"
                                   [(ngModel)]="dayService.dayModel.baseOnWeek.custom.repeat.isRepeat"
+                                  [disabled]="!isBoWeek || !isBoWeekCustom"
                                 />
                                 <div class="form-check-label">
                                     <span>Every </span>
@@ -117,6 +121,7 @@
                                   value=""
                                   id="flexCheckChecked"
                                   [(ngModel)]="dayService.dayModel.baseOnWeek.custom.specific.isSpecefic"
+                                  [disabled]="!isBoWeek || !isBoWeekCustom"
                                 />
                                 <label class="form-check-label" for="flexCheckChecked">
                                   Specific day(s) of week (choose one or many)
@@ -135,6 +140,7 @@
                                   value=""
                                   id="flexCheckDefault"
                                   [(ngModel)]="dayService.dayModel.baseOnWeek.custom.dayOfMonth.isDayOfMonth"
+                                  [disabled]="!isBoWeek || !isBoWeekCustom"
                                 />
                                 <div class="form-check-label">
                                     <span>On the </span>
@@ -198,7 +204,8 @@
                       id="bomonthLast"
                       value="last"
                       [(ngModel)]="dayService.dayModel.baseOnMonth.type"
-                      (change)="onTypeSelect($event)"/>
+                      (change)="onTypeSelect($event)"
+                      [disabled]="!isBoMonth"/>
                   <label for="bomonthLast" class="form-check-label">
                       On the Last day of the month 
                   </label>
@@ -211,12 +218,14 @@
                     id="bomonthLast"
                     value="before"
                     [(ngModel)]="dayService.dayModel.baseOnMonth.type"
-                    (change)="onTypeSelect($event)"/>
+                    (change)="onTypeSelect($event)"
+                    [disabled]="!isBoMonth"/>
                 <label for="bomonthLast" class="form-check-label">
                     <label>
                         <select
                         class="form-select form-select-sm"
                         [(ngModel)]="dayService.dayModel.baseOnMonth.before"
+                        [disabled]="!isBoMonth || !isBoMonthBefore"
                       >
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -262,7 +271,8 @@
                       id="bomonthCustom"
                       value="custom"
                       [(ngModel)]="dayService.dayModel.baseOnMonth.type"
-                      (change)="onTypeSelect($event)"/>
+                      (change)="onTypeSelect($event)"
+                      [disabled]="!isBoMonth"/>
                   <label for="bomonthCustom" class="form-check-label">
                       Custom
                       <div class="row">
@@ -274,6 +284,7 @@
                                     value=""
                                     id="flexCheckDefault"
                                     [(ngModel)]="dayService.dayModel.baseOnMonth.custom.repeat.isRepeat"
+                                    [disabled]="!isBoMonth || !isBoMonthCustom"
                                   />
                                   <div class="form-check-label">
                                       <span>Every </span>
@@ -364,6 +375,7 @@
                                     value=""
                                     id="flexCheckChecked"
                                     [(ngModel)]="dayService.dayModel.baseOnMonth.custom.specific.isSpecefic"
+                                    [disabled]="!isBoMonth || !isBoMonthCustom"
                                   />
                                   <label class="form-check-label" for="flexCheckChecked">
                                     Specific day(s) of month (choose one or many)

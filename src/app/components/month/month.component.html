@@ -1,1 +1,158 @@
-<p>month works!</p>
+<div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="option"
+        id="option1"
+        value="every"
+        [(ngModel)]="monthService.monthModel.type"
+        (change)="onTypeSelect($event)"
+        checked
+      />
+      <label class="form-check-label" for="option1">
+        Every month
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="option"
+        id="option2"
+        value="custom"
+        [(ngModel)]="monthService.monthModel.type"
+        (change)="onTypeSelect($event)"
+      />
+      <label class="form-check-label" for="option2">
+        Custom
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-check mt-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+                [disabled]="!isCustom"
+                [(ngModel)]="monthService.monthModel.custom.repeat.isRepeat"
+              />
+              <div class="form-check-label">
+                  <span>Every </span>
+                  <label>
+                      <select
+                      class="form-select form-select-sm"
+                      [(ngModel)]="monthService.monthModel.custom.repeat.repeatInterval"
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                  </label>
+                  <span> month(s) starting at month </span>
+                  <label>
+                      <select
+                      class="form-select form-select-sm"
+                      [(ngModel)]="monthService.monthModel.custom.repeat.repeatStartAt"
+                    >
+                      <option value="00">January</option>
+                      <option value="01">February</option>
+                      <option value="02">March</option>
+                      <option value="03">April</option>
+                      <option value="04">May</option>
+                      <option value="05">June</option>
+                      <option value="06">July</option>
+                      <option value="07">August</option>
+                      <option value="08">September</option>
+                      <option value="09">October</option>
+                      <option value="10">November</option>
+                      <option value="11">December</option>
+                    </select>
+                  </label>
+              </div>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckChecked"
+                [disabled]="!isCustom"
+                [(ngModel)]="monthService.monthModel.custom.specific.isSpecific"
+              />
+              <label class="form-check-label" for="flexCheckChecked">
+                Specific month(s) (choose one or many)
+                <ng-multiselect-dropdown
+                  [placeholder]="'select month(s)'"
+                  [settings]="dropdownSettings"
+                  [data]="dropdownList"
+                  [(ngModel)]="monthService.monthModel.custom.specific.specificValues">
+                </ng-multiselect-dropdown>
+              </label>
+            </div>
+            <div class="form-check mt-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+                [disabled]="!isCustom"
+                [(ngModel)]="monthService.monthModel.custom.between.isBetween"
+              />
+              <div class="form-check-label">
+                  <span>Every month between month </span>
+                  <label>
+                    <select
+                    class="form-select form-select-sm"
+                    [(ngModel)]="monthService.monthModel.custom.between.betweenFrom"
+                  >
+                    <option value="00">January</option>
+                    <option value="01">February</option>
+                    <option value="02">March</option>
+                    <option value="03">April</option>
+                    <option value="04">May</option>
+                    <option value="05">June</option>
+                    <option value="06">July</option>
+                    <option value="07">August</option>
+                    <option value="08">September</option>
+                    <option value="09">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                  </select>
+                </label>
+                <span> and month </span>
+                <label>
+                    <select
+                    class="form-select form-select-sm"
+                    [(ngModel)]="monthService.monthModel.custom.between.betweenTo"
+                  >
+                    <option value="00">January</option>
+                    <option value="01">February</option>
+                    <option value="02">March</option>
+                    <option value="03">April</option>
+                    <option value="04">May</option>
+                    <option value="05">June</option>
+                    <option value="06">July</option>
+                    <option value="07">August</option>
+                    <option value="08">September</option>
+                    <option value="09">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>

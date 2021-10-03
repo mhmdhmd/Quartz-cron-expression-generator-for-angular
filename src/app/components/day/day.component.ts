@@ -1,5 +1,6 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { BaseOnMonthType, BaseOnWeekType, DayType } from './day.model';
 import { DayService } from './day.service';
 
 @Component({
@@ -15,7 +16,11 @@ export class DayComponent implements OnInit {
   dropdownSettings : IDropdownSettings = {};
 
   isBoWeek: boolean = false;
+  isBoWeekCustom: boolean = false;
   isBoMonth: boolean = false;
+  isBoMonthCustom: boolean = false;
+  isBoMonthBefore: boolean = false;
+
   ngOnInit() {
     this.boWeekDropDownList = [
       { item_id: 1, item_text: 'Sunday' },
@@ -69,15 +74,20 @@ export class DayComponent implements OnInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
-    //this.isCustom = this.getTypeState();
+    this.getTypeState();
   }
 
   onTypeSelect(event: any){
-    //this.isCustom = this.getTypeState();
+    this.getTypeState();
   }
 
   getTypeState(){
-    //return this.hoursService.hourModel.type === Type.Every? false: true;
+    this.isBoWeek = this.dayService.dayModel.type === DayType.BOWeek? true: false;
+    this.isBoMonth = this.dayService.dayModel.type === DayType.BOMonth? true: false;
+
+    this.isBoWeekCustom = this.dayService.dayModel.baseOnWeek.type === BaseOnWeekType.Custom? true: false;
+    this.isBoMonthCustom = this.dayService.dayModel.baseOnMonth.type === BaseOnMonthType.Custom? true: false;
+    this.isBoMonthBefore = this.dayService.dayModel.baseOnMonth.type === BaseOnMonthType.Before? true: false;
   }
 
 }

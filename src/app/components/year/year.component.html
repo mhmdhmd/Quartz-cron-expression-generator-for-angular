@@ -1,1 +1,133 @@
-<p>year works!</p>
+<div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="option"
+        id="option1"
+        value="every"
+        [(ngModel)]="yearService.yearModel.type"
+        (change)="onTypeSelect($event)"
+        checked
+      />
+      <label class="form-check-label" for="option1">
+        Every year
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="option"
+        id="option2"
+        value="custom"
+        [(ngModel)]="yearService.yearModel.type"
+        (change)="onTypeSelect($event)"
+      />
+      <label class="form-check-label" for="option2">
+        Custom
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-check mt-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+                [disabled]="!isCustom"
+                [(ngModel)]="yearService.yearModel.custom.repeat.isRepeat"
+              />
+              <div class="form-check-label">
+                  <span>Every </span>
+                  <label>
+                      <select
+                      class="form-select form-select-sm"
+                      [(ngModel)]="yearService.yearModel.custom.repeat.repeatInterval"
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                    </select>
+                  </label>
+                  <span> year(s) starting at year </span>
+                  <label>
+                      <select
+                      class="form-select form-select-sm"
+                      [(ngModel)]="yearService.yearModel.custom.repeat.repeatStartAt"
+                    >
+                      <option *ngFor="let year of yearList" [value]="year">{{year}}</option>
+                    </select>
+                  </label>
+              </div>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckChecked"
+                [disabled]="!isCustom"
+                [(ngModel)]="yearService.yearModel.custom.specific.isSpecific"
+              />
+              <label class="form-check-label" for="flexCheckChecked">
+                Specific year(s) (choose one or many)
+                <ng-multiselect-dropdown
+                  [placeholder]="'select year(s)'"
+                  [settings]="dropdownSettings"
+                  [data]="dropdownList"
+                  [(ngModel)]="yearService.yearModel.custom.specific.specificValues">
+                </ng-multiselect-dropdown>
+              </label>
+            </div>
+            <div class="form-check mt-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+                [disabled]="!isCustom"
+                [(ngModel)]="yearService.yearModel.custom.between.isBetween"
+              />
+              <div class="form-check-label">
+                  <span>Every year between year </span>
+                  <label>
+                    <select
+                    class="form-select form-select-sm"
+                    [(ngModel)]="yearService.yearModel.custom.between.betweenFrom"
+                  >
+                    <option *ngFor="let year of yearList" [value]="year">{{year}}</option>
+                  </select>
+                </label>
+                <span> and year </span>
+                <label>
+                    <select
+                    class="form-select form-select-sm"
+                    [(ngModel)]="yearService.yearModel.custom.between.betweenTo"
+                  >
+                    <option *ngFor="let year of yearList" [value]="year">{{year}}</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>

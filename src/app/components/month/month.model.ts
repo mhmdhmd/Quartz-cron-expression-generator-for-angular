@@ -1,7 +1,7 @@
 import { Custom as sharedCustom, Type, Repeat as sharedRepeat, Between as sharedBetween } from "../shared.model";
 
 
-export class Hours{
+export class Month{
     type: Type = Type.Every;
     custom: Custom = new Custom();
 }
