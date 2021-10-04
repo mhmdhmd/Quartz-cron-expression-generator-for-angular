@@ -7,7 +7,7 @@ export class Custom{
 export class Repeat{
     isRepeat: boolean = false;
     interval: number = 1;
-    startAt: number = 0;
+    startAt: number = 1;
 }
 
 export class Specific{
@@ -17,8 +17,8 @@ export class Specific{
 
 export class Between{
     isBetween: boolean = false;
-    from: number = 0;
-    to: number = 0;
+    from: number = 1;
+    to: number = 1;
 }
 
 export enum Type{

@@ -13,6 +13,8 @@ import { YearService } from './components/year/year.service';
 })
 export class AppComponent {
   
+  expResult: string = '* * * ? * * *';
+
   constructor(private secondsService: SecondsService,
               private minutesService: MinutesService,
               private hoursService: HoursService,
@@ -27,7 +29,6 @@ export class AppComponent {
     var monthExp = this.monthService.getExpression();
     var dayExp = this.dayService.getExpression();
     var yearExp = this.yearService.getExpression();
-    var expression = `${secondsExp} ${minutesExp} ${hoursExp} ${dayExp[1]} ${monthExp} ${dayExp[0]} ${yearExp}`
-    console.log(expression);
+    this.expResult = `${secondsExp} ${minutesExp} ${hoursExp} ${dayExp[1]} ${monthExp} ${dayExp[0]} ${yearExp}`
   }
 }

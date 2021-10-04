@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-md-12">
-      <h3>Schedular Expression Maker</h3>
+      <h3>Quartz.Net Cron Expression Generator</h3>
     </div>
   </div>
   <div class="row">
@@ -40,11 +40,11 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-3 mt-3">
-      <button class="btn btn-success" (click)="onGetModel()">Get Model</button>
+    <div class="col-md-2 mt-3">
+      <button class="btn btn-success" (click)="onGetModel()">Generate Exp</button>
     </div>
-    <div class="col-md-9 mt-3">
-      <input type="text">
+    <div class="col-md-10 mt-3">
+      <input type="text" class="form-control fw-bold fs-4" [ngModel]="expResult">
     </div>
   </div>
 </div>
