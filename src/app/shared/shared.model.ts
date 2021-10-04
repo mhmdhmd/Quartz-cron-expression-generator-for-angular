@@ -1,4 +1,3 @@
-
 export class Custom{
     specific: Specific = new Specific();
     repeat: Repeat = new Repeat();
@@ -7,22 +6,27 @@ export class Custom{
 
 export class Repeat{
     isRepeat: boolean = false;
-    repeatInterval: number = 1;
-    repeatStartAt: number = 0;
+    interval: number = 1;
+    startAt: number = 0;
 }
 
 export class Specific{
     isSpecific: boolean = false;
-    specificValues: number[] = [];
+    values: DropDownItem[] = [];
 }
 
 export class Between{
     isBetween: boolean = false;
-    betweenFrom: number = 0;
-    betweenTo: number = 0;
+    from: number = 0;
+    to: number = 0;
 }
 
 export enum Type{
     Every="every",
     Custom="custom"
+}
+
+export class DropDownItem{
+    
+    constructor(public id: number, public text:string) {}
 }

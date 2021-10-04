@@ -42,7 +42,7 @@
                   <label>
                       <select
                       class="form-select form-select-sm"
-                      [(ngModel)]="monthService.monthModel.custom.repeat.repeatInterval"
+                      [(ngModel)]="monthService.monthModel.custom.repeat.interval"
                     >
                       <option *ngFor="let month of monthsList; let i = index" [value]="i+1">{{i+1}}</option>
                     </select>
@@ -51,7 +51,7 @@
                   <label>
                       <select
                       class="form-select form-select-sm"
-                      [(ngModel)]="monthService.monthModel.custom.repeat.repeatStartAt"
+                      [(ngModel)]="monthService.monthModel.custom.repeat.startAt"
                     >
                       <option *ngFor="let month of monthsList; let i = index" [value]="i">{{month}}</option>
                     </select>
@@ -73,7 +73,7 @@
                   [placeholder]="'select month(s)'"
                   [settings]="dropdownSettings"
                   [data]="dropdownList"
-                  [(ngModel)]="monthService.monthModel.custom.specific.specificValues">
+                  [(ngModel)]="monthService.monthModel.custom.specific.values">
                 </ng-multiselect-dropdown>
               </label>
             </div>
@@ -91,7 +91,7 @@
                   <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="monthService.monthModel.custom.between.betweenFrom"
+                    [(ngModel)]="monthService.monthModel.custom.between.from"
                   >
                     <option *ngFor="let month of monthsList; let i = index" [value]="i">{{month}}</option>
                   </select>
@@ -100,7 +100,7 @@
                 <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="monthService.monthModel.custom.between.betweenTo"
+                    [(ngModel)]="monthService.monthModel.custom.between.to"
                   >
                     <option *ngFor="let month of monthsList; let i = index" [value]="i">{{month}}</option>
                   </select>

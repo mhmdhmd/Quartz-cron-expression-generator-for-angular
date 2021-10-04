@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { Type } from '../shared.model';
+import { DropDownItem, Type } from '../../shared/shared.model';
 import { MonthService } from './month.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class MonthComponent implements OnInit {
 
   constructor(public monthService: MonthService) { }
 
-  dropdownList: {}[] = [];
+  dropdownList: DropDownItem[] = [];
   dropdownSettings : IDropdownSettings = {};
   public monthsList: string[] = [];
 
@@ -21,13 +21,13 @@ export class MonthComponent implements OnInit {
     this.monthsList = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
     for(const [i,month] of this.monthsList.entries()){
-      this.dropdownList[i] = { item_id: i+1, item_text: month };
+      this.dropdownList[i] = new DropDownItem(i+1, month);
     }
 
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'id',
+      textField: 'text',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 3,

@@ -1,4 +1,4 @@
-import { Custom, Type} from "../shared.model";
+import { Custom, Type} from "../../shared/shared.model";
 
 
 export class Hours{

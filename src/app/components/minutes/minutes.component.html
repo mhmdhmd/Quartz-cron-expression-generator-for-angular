@@ -42,7 +42,7 @@
                   <label>
                       <select
                       class="form-select form-select-sm"
-                      [(ngModel)]="minutesService.minuteModel.custom.repeat.repeatInterval"
+                      [(ngModel)]="minutesService.minuteModel.custom.repeat.interval"
                     >
                       <option *ngFor="let num of zeroTo59" [value]="num+1">{{num+1}}</option>
                     </select>
@@ -51,7 +51,7 @@
                   <label>
                       <select
                       class="form-select form-select-sm"
-                      [(ngModel)]="minutesService.minuteModel.custom.repeat.repeatStartAt"
+                      [(ngModel)]="minutesService.minuteModel.custom.repeat.startAt"
                     >
                       <option *ngFor="let num of zeroTo59" [value]="num">{{num}}</option>
                     </select>
@@ -73,7 +73,7 @@
                   [placeholder]="'select minute(s)'"
                   [settings]="dropdownSettings"
                   [data]="dropdownList"
-                  [(ngModel)]="minutesService.minuteModel.custom.specific.specificValues">
+                  [(ngModel)]="minutesService.minuteModel.custom.specific.values">
                 </ng-multiselect-dropdown>
               </label>
             </div>
@@ -91,7 +91,7 @@
                   <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="minutesService.minuteModel.custom.between.betweenFrom"
+                    [(ngModel)]="minutesService.minuteModel.custom.between.from"
                   >
                     <option *ngFor="let num of zeroTo59" [value]="num">{{num}}</option>
                   </select>
@@ -100,7 +100,7 @@
                   <label>
                       <select
                       class="form-select form-select-sm"
-                      [(ngModel)]="minutesService.minuteModel.custom.between.betweenTo"
+                      [(ngModel)]="minutesService.minuteModel.custom.between.to"
                     >
                       <option *ngFor="let num of zeroTo59" [value]="num">{{num}}</option>
                     </select>
@@ -111,5 +111,5 @@
         </div>
       </label>
     </div>
-  </div>
+</div>
   

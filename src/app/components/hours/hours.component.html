@@ -42,7 +42,7 @@
                 <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="hoursService.hourModel.custom.repeat.repeatInterval"
+                    [(ngModel)]="hoursService.hourModel.custom.repeat.interval"
                   >
                     <option *ngFor="let num of zeroTo23" [value]="num+1">{{num+1}}</option>
                   </select>
@@ -51,7 +51,7 @@
                 <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="hoursService.hourModel.custom.repeat.repeatStartAt"
+                    [(ngModel)]="hoursService.hourModel.custom.repeat.startAt"
                   >
                     <option *ngFor="let num of zeroTo23" [value]="num">{{num}}</option>
                   </select>
@@ -73,7 +73,7 @@
                 [placeholder]="'select hour(s)'"
                 [settings]="dropdownSettings"
                 [data]="dropdownList"
-                [(ngModel)]="hoursService.hourModel.custom.specific.specificValues">
+                [(ngModel)]="hoursService.hourModel.custom.specific.values">
               </ng-multiselect-dropdown>
             </label>
           </div>
@@ -91,7 +91,7 @@
                 <label>
                   <select
                   class="form-select form-select-sm"
-                  [(ngModel)]="hoursService.hourModel.custom.between.betweenFrom"
+                  [(ngModel)]="hoursService.hourModel.custom.between.from"
                 >
                     <option *ngFor="let num of zeroTo23" [value]="num">{{num}}</option>
                   </select>
@@ -100,7 +100,7 @@
                 <label>
                   <select
                   class="form-select form-select-sm"
-                  [(ngModel)]="hoursService.hourModel.custom.between.betweenTo"
+                  [(ngModel)]="hoursService.hourModel.custom.between.to"
                 >
                     <option *ngFor="let num of zeroTo23" [value]="num">{{num}}</option>
                   </select>

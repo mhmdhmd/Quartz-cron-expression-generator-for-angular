@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { Type } from '../shared.model';
+import { DropDownItem, Type } from '../../shared/shared.model';
 import { MinutesService } from './minutes.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class MinutesComponent implements OnInit {
 
   constructor(public minutesService: MinutesService) { }
 
-  dropdownList: {}[] = [];
+  dropdownList: DropDownItem[] = [];
   dropdownSettings : IDropdownSettings = {};
   public zeroTo59: number[] = [];
 
@@ -20,13 +20,13 @@ export class MinutesComponent implements OnInit {
   ngOnInit() {
     for(let i=0;i<60;i++){
       this.zeroTo59[i] = i;
-      this.dropdownList[i] = { item_id: i, item_text: i };
+      this.dropdownList[i] = new DropDownItem(i, i.toString());
     }
 
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'id',
+      textField: 'text',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 3,

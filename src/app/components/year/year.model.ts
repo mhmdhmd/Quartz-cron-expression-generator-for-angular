@@ -1,4 +1,4 @@
-import { Custom as sharedCustom, Type, Repeat as sharedRepeat, Between as sharedBetween } from "../shared.model";
+import { Custom as sharedCustom, Type, Repeat as sharedRepeat, Between as sharedBetween } from "../../shared/shared.model";
 
 export class Year{
     type: Type = Type.Every;

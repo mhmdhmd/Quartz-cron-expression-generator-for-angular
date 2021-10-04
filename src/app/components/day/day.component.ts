@@ -1,5 +1,6 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { DropDownItem } from 'src/app/shared/shared.model';
 import { BaseOnMonthType, BaseOnWeekType, DayType } from './day.model';
 import { DayService } from './day.service';
 
@@ -11,8 +12,8 @@ import { DayService } from './day.service';
 export class DayComponent implements OnInit {
   constructor(public dayService: DayService) { }
 
-  boWeekDropDownList: {}[] = [];
-  boMonthDropDownList: {}[] = [];
+  boWeekDropDownList: DropDownItem[] = [];
+  boMonthDropDownList: DropDownItem[] = [];
   dropdownSettings : IDropdownSettings = {};
   public daysList: string[] = [];
   public daysIndexInMonth: number[] = [1,2,3,4,5];
@@ -28,17 +29,17 @@ export class DayComponent implements OnInit {
     this.daysList = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
     for(const [i, day] of this.daysList.entries())
-      this.boWeekDropDownList[i] = { item_id: i, item_text: day };
+      this.boWeekDropDownList[i] = new DropDownItem(i+1, day);
 
     for(let i=0; i<31;i++){
       this.zeroTo30[i]=i;
-      this.boMonthDropDownList[i] = { item_id: i, item_text: (i+1).toString() };
+      this.boMonthDropDownList[i] = new DropDownItem(i+1, (i+1).toString());
     }
 
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'id',
+      textField: 'text',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 3,

@@ -42,7 +42,7 @@
                   <label>
                       <select
                       class="form-select form-select-sm"
-                      [(ngModel)]="yearService.yearModel.custom.repeat.repeatInterval"
+                      [(ngModel)]="yearService.yearModel.custom.repeat.interval"
                     >
                       <option *ngFor="let num of zeroTo99" [value]="num+1">{{num+1}}</option>
                     </select>
@@ -73,7 +73,7 @@
                   [placeholder]="'select year(s)'"
                   [settings]="dropdownSettings"
                   [data]="dropdownList"
-                  [(ngModel)]="yearService.yearModel.custom.specific.specificValues">
+                  [(ngModel)]="yearService.yearModel.custom.specific.values">
                 </ng-multiselect-dropdown>
               </label>
             </div>
@@ -111,4 +111,4 @@
         </div>
       </label>
     </div>
-  </div>
+</div>

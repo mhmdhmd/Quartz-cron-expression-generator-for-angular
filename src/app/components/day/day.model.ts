@@ -1,3 +1,5 @@
+import { DropDownItem } from "src/app/shared/shared.model";
+
 export class Day{
     type: DayType = DayType.Every;
     baseOnWeek: BaseOnWeek = new BaseOnWeek();
@@ -46,12 +48,12 @@ export class BaseOnMonthRepeat extends BaseRepeat{
 
 export class Specific{
     isSpecefic: boolean = false;
-    values: string[] = [];
+    values: DropDownItem[] = [];
 }
 
 export class DayOfMonth{
     isDayOfMonth: boolean = false;
-    Xst: number = 1;
+    xst: number = 1;
     day: number = 1;
 }
 

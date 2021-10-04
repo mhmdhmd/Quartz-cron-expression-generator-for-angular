@@ -42,7 +42,7 @@
                 <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="secondsService.secondModel.custom.repeat.repeatInterval"
+                    [(ngModel)]="secondsService.secondModel.custom.repeat.interval"
                   >
                     <option *ngFor="let num of zeroTo59" [value]="num+1">{{num+1}}</option>
                   </select>
@@ -51,7 +51,7 @@
                 <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="secondsService.secondModel.custom.repeat.repeatStartAt"
+                    [(ngModel)]="secondsService.secondModel.custom.repeat.startAt"
                   >
                     <option *ngFor="let num of zeroTo59" [value]="num">{{num}}</option>
                   </select>
@@ -73,7 +73,7 @@
                 [placeholder]="'select second(s)'"
                 [settings]="dropdownSettings"
                 [data]="dropdownList"
-                [(ngModel)]="secondsService.secondModel.custom.specific.specificValues"
+                [(ngModel)]="secondsService.secondModel.custom.specific.values"
                 (onSelect)="onItemSelect($event)"
                 (onSelectAll)="onSelectAll($event)">
               </ng-multiselect-dropdown>
@@ -93,7 +93,7 @@
                 <label>
                   <select
                   class="form-select form-select-sm"
-                  [(ngModel)]="secondsService.secondModel.custom.between.betweenFrom"
+                  [(ngModel)]="secondsService.secondModel.custom.between.from"
                 >
                   <option *ngFor="let num of zeroTo59" [value]="num">{{num}}</option>
                 </select>
@@ -102,7 +102,7 @@
                 <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="secondsService.secondModel.custom.between.betweenTo"
+                    [(ngModel)]="secondsService.secondModel.custom.between.to"
                   >
                     <option *ngFor="let num of zeroTo59" [value]="num">{{num}}</option>
                   </select>
