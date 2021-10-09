@@ -44,7 +44,7 @@
                       class="form-select form-select-sm"
                       [(ngModel)]="minutesService.minuteModel.custom.repeat.interval"
                     >
-                      <option *ngFor="let num of zeroTo59" [value]="num+1">{{num+1}}</option>
+                      <option *ngFor="let num of zeroTo59" [value]="num">{{num}}</option>
                     </select>
                   </label>
                   <span> minute(s) starting at minute </span>

@@ -44,7 +44,7 @@
                     class="form-select form-select-sm"
                     [(ngModel)]="hoursService.hourModel.custom.repeat.interval"
                   >
-                    <option *ngFor="let num of zeroTo23" [value]="num+1">{{num+1}}</option>
+                    <option *ngFor="let num of zeroTo23" [value]="num">{{num}}</option>
                   </select>
                 </label>
                 <span> hour(s) starting at hour </span>

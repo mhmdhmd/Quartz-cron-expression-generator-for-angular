@@ -6,7 +6,7 @@ export class Custom{
 
 export class Repeat{
     isRepeat: boolean = false;
-    interval: number = 1;
+    interval: number = 0;
     startAt: number = 0;
 }
 
