@@ -29,7 +29,7 @@ export class DayService implements IExpression{
                 if(this.dayModel.baseOnMonth.custom.repeat.isRepeat){
                     const interval = this.dayModel.baseOnMonth.custom.repeat.interval;
                     const startAt = this.dayModel.baseOnMonth.custom.repeat.startAt;
-                    boMonthExp = `${interval}/${startAt}`;
+                    boMonthExp = `${startAt}/${interval}`;
                 }
                 if(this.dayModel.baseOnMonth.custom.specific.isSpecefic){
                     boMonthExp = this.stringService.addComma(boMonthExp);
@@ -51,7 +51,7 @@ export class DayService implements IExpression{
                 if(this.dayModel.baseOnWeek.custom.repeat.isRepeat){
                     const interval = this.dayModel.baseOnWeek.custom.repeat.interval;
                     const startAt = this.dayModel.baseOnWeek.custom.repeat.startAt;
-                    boWeekExp = `${interval}/${startAt}`;
+                    boWeekExp = `${startAt}/${interval}`;
                 }
                 if(this.dayModel.baseOnWeek.custom.specific.isSpecefic){
                     boWeekExp = this.stringService.addComma(boWeekExp);

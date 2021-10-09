@@ -21,7 +21,7 @@ export class YearService {
       if (this.yearModel.custom.repeat.isRepeat) {
         const interval = this.yearModel.custom.repeat.interval;
         const startAt = this.yearModel.custom.repeat.startAt;
-        expression = `${interval}/${startAt}`;
+        expression = `${startAt}/${interval}`;
       }
       //isSpecific
       if (this.yearModel.custom.specific.isSpecific) {

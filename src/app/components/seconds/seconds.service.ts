@@ -22,7 +22,7 @@ export class SecondsService implements IExpression {
       if (this.secondModel.custom.repeat.isRepeat) {
         const interval = this.secondModel.custom.repeat.interval;
         const startAt = this.secondModel.custom.repeat.startAt;
-        expression = `${interval}/${startAt}`;
+        expression = `${startAt}/${interval}`;
       }
       //isSpecific
       if (this.secondModel.custom.specific.isSpecific) {

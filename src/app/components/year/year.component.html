@@ -51,7 +51,7 @@
                   <label>
                       <select
                       class="form-select form-select-sm"
-                      [(ngModel)]="yearService.yearModel.custom.repeat.repeatStartAt"
+                      [(ngModel)]="yearService.yearModel.custom.repeat.startAt"
                     >
                       <option *ngFor="let num of zeroTo99" [value]="getYearByOffset(num)">{{getYearByOffset(num)}}</option>
                     </select>
@@ -91,7 +91,7 @@
                   <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="yearService.yearModel.custom.between.betweenFrom"
+                    [(ngModel)]="yearService.yearModel.custom.between.from"
                   >
                     <option *ngFor="let num of zeroTo99" [value]="getYearByOffset(num)">{{getYearByOffset(num)}}</option>
                   </select>
@@ -100,7 +100,7 @@
                 <label>
                     <select
                     class="form-select form-select-sm"
-                    [(ngModel)]="yearService.yearModel.custom.between.betweenTo"
+                    [(ngModel)]="yearService.yearModel.custom.between.to"
                   >
                     <option *ngFor="let num of zeroTo99" [value]="getYearByOffset(num)">{{getYearByOffset(num)}}</option>
                   </select>

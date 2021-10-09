@@ -22,7 +22,7 @@ export class MonthService implements IExpression {
       if (this.monthModel.custom.repeat.isRepeat) {
         const interval = this.monthModel.custom.repeat.interval;
         const startAt = this.monthModel.custom.repeat.startAt;
-        expression = `${interval}/${startAt}`;
+        expression = `${+startAt+1}/${interval}`;
       }
       //isSpecific
       if (this.monthModel.custom.specific.isSpecific) {
@@ -39,7 +39,7 @@ export class MonthService implements IExpression {
 
         var from = this.monthModel.custom.between.from;
         var to = this.monthModel.custom.between.to;
-        expression = expression.concat(`${from}-${to}`);
+        expression = expression.concat(`${+from+1}-${+to+1}`);
       }
 
       if (expression === '') expression = '*';

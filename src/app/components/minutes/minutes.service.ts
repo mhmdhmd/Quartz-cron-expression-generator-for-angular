@@ -22,7 +22,7 @@ export class MinutesService implements IExpression {
       if (this.minuteModel.custom.repeat.isRepeat) {
         const interval = this.minuteModel.custom.repeat.interval;
         const startAt = this.minuteModel.custom.repeat.startAt;
-        expression = `${interval}/${startAt}`;
+        expression = `${startAt}/${interval}`;
       }
       //isSpecific
       if (this.minuteModel.custom.specific.isSpecific) {

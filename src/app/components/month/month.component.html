@@ -53,7 +53,7 @@
                       class="form-select form-select-sm"
                       [(ngModel)]="monthService.monthModel.custom.repeat.startAt"
                     >
-                      <option *ngFor="let month of monthsList; let i = index" [value]="i+1">{{month}}</option>
+                      <option *ngFor="let month of monthsList; let i = index" [value]="i">{{month}}</option>
                     </select>
                   </label>
               </div>
@@ -93,7 +93,7 @@
                     class="form-select form-select-sm"
                     [(ngModel)]="monthService.monthModel.custom.between.from"
                   >
-                    <option *ngFor="let month of monthsList; let i = index" [value]="i+1">{{month}}</option>
+                    <option *ngFor="let month of monthsList; let i = index" [value]="i">{{month}}</option>
                   </select>
                 </label>
                 <span> and month </span>
@@ -102,7 +102,7 @@
                     class="form-select form-select-sm"
                     [(ngModel)]="monthService.monthModel.custom.between.to"
                   >
-                    <option *ngFor="let month of monthsList; let i = index" [value]="i+1">{{month}}</option>
+                    <option *ngFor="let month of monthsList; let i = index" [value]="i">{{month}}</option>
                   </select>
                 </label>
               </div>

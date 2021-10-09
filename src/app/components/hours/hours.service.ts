@@ -22,7 +22,7 @@ export class HoursService implements IExpression {
       if (this.hourModel.custom.repeat.isRepeat) {
         const interval = this.hourModel.custom.repeat.interval;
         const startAt = this.hourModel.custom.repeat.startAt;
-        expression = `${interval}/${startAt}`;
+        expression = `${startAt}/${interval}`;
       }
       //isSpecific
       if (this.hourModel.custom.specific.isSpecific) {
