@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import cronstrue from 'cronstrue';
 
 import { DayService } from './components/day/day.service';
 import { HoursService } from './components/hours/hours.service';
