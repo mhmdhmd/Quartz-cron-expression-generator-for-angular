@@ -32,11 +32,13 @@ export class DayService implements IExpression{
                     boMonthExp = `${startAt}/${interval}`;
                 }
                 if(this.dayModel.baseOnMonth.custom.specific.isSpecefic){
-                    boMonthExp = this.stringService.addComma(boMonthExp);
-
                     var specificValues = this.dayModel.baseOnMonth.custom.specific.values.map((v) =>{
                         return v.id
                     });
+
+                    if(specificValues.length !== 0)
+                        boMonthExp = this.stringService.addComma(boMonthExp);
+
                     boMonthExp = boMonthExp.concat(specificValues.join(','));
                 }
                 if(boMonthExp==='') boMonthExp='*';
@@ -54,11 +56,13 @@ export class DayService implements IExpression{
                     boWeekExp = `${startAt}/${interval}`;
                 }
                 if(this.dayModel.baseOnWeek.custom.specific.isSpecefic){
-                    boWeekExp = this.stringService.addComma(boWeekExp);
-
                     var specificValues = this.dayModel.baseOnWeek.custom.specific.values.map((v) =>{
                         return v.id
                     });
+
+                    if(specificValues.length !== 0)
+                        boWeekExp = this.stringService.addComma(boWeekExp);
+
                     boWeekExp = boWeekExp.concat(specificValues.join(','));
                 }
                 if(this.dayModel.baseOnWeek.custom.dayOfMonth.isDayOfMonth){

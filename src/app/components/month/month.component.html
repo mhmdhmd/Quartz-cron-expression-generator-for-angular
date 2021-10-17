@@ -44,7 +44,7 @@
                       class="form-select form-select-sm"
                       [(ngModel)]="monthService.monthModel.custom.repeat.interval"
                     >
-                      <option *ngFor="let month of monthsList; let i = index" [value]="i+1">{{i+1}}</option>
+                      <option *ngFor="let month of monthsList; let i = index" [value]="i">{{i+1}}</option>
                     </select>
                   </label>
                   <span> month(s) starting at month </span>

@@ -26,13 +26,15 @@ export class MinutesService implements IExpression {
       }
       //isSpecific
       if (this.minuteModel.custom.specific.isSpecific) {
-        expression = this.stringService.addComma(expression);
-
         var specificValues = this.minuteModel.custom.specific.values.map(
           (v) => {
             return v.id;
           }
         );
+
+        if(specificValues.length !== 0)
+          expression = this.stringService.addComma(expression);
+
         expression = expression.concat(specificValues.join(','));
       }
       //isBetween

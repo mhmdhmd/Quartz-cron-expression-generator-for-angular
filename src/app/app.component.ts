@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import cronstrue from 'cronstrue';
+
 import { DayService } from './components/day/day.service';
 import { HoursService } from './components/hours/hours.service';
 import { MinutesService } from './components/minutes/minutes.service';
@@ -20,7 +22,9 @@ export class AppComponent {
               private hoursService: HoursService,
               private monthService: MonthService,
               private dayService: DayService,
-              private yearService: YearService){}
+              private yearService: YearService)
+  {
+  }
 
   onGetModel(){
     var secondsExp = this.secondsService.getExpression();
@@ -29,6 +33,6 @@ export class AppComponent {
     var monthExp = this.monthService.getExpression();
     var dayExp = this.dayService.getExpression();
     var yearExp = this.yearService.getExpression();
-    this.expResult = `${secondsExp} ${minutesExp} ${hoursExp} ${dayExp[1]} ${monthExp} ${dayExp[0]} ${yearExp}`
+    this.expResult = `${secondsExp} ${minutesExp} ${hoursExp} ${dayExp[1]} ${monthExp} ${dayExp[0]} ${yearExp}`;
   }
 }

@@ -20,17 +20,18 @@ export class MonthService implements IExpression {
       //type is custom
       //isRepeat
       if (this.monthModel.custom.repeat.isRepeat) {
-        const interval = this.monthModel.custom.repeat.interval;
+        const interval = +this.monthModel.custom.repeat.interval+1;
         const startAt = this.monthModel.custom.repeat.startAt;
         expression = `${+startAt+1}/${interval}`;
       }
       //isSpecific
       if (this.monthModel.custom.specific.isSpecific) {
-        expression = this.stringService.addComma(expression);
-
         var specificValues = this.monthModel.custom.specific.values.map((v) => {
           return v.id;
         });
+
+        if(specificValues.length!==0)
+          expression = this.stringService.addComma(expression);
         expression = expression.concat(specificValues.join(','));
       }
       //isBetween

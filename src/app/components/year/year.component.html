@@ -44,7 +44,7 @@
                       class="form-select form-select-sm"
                       [(ngModel)]="yearService.yearModel.custom.repeat.interval"
                     >
-                      <option *ngFor="let num of zeroTo99" [value]="num+1">{{num+1}}</option>
+                      <option *ngFor="let num of zeroTo99" [value]="num">{{num+1}}</option>
                     </select>
                   </label>
                   <span> year(s) starting at year </span>

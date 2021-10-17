@@ -19,17 +19,17 @@ export class YearService {
       //type is custom
       //isRepeat
       if (this.yearModel.custom.repeat.isRepeat) {
-        const interval = this.yearModel.custom.repeat.interval;
+        const interval = +this.yearModel.custom.repeat.interval+1;
         const startAt = this.yearModel.custom.repeat.startAt;
         expression = `${startAt}/${interval}`;
       }
       //isSpecific
       if (this.yearModel.custom.specific.isSpecific) {
-        expression = this.stringService.addComma(expression);
-
         var specificValues = this.yearModel.custom.specific.values.map((v) => {
           return v.id;
         });
+        if(specificValues.length!==0)
+          expression = this.stringService.addComma(expression);
         expression = expression.concat(specificValues.join(','));
       }
       //isBetween
