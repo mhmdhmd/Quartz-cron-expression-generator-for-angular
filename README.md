@@ -1,5 +1,5 @@
 
-# Quartz.Net Cron Expression Generator
+# Quartz cron expression generator for angular
 
 Create and manage cron expression for Quartz.Net scheduler.
 
