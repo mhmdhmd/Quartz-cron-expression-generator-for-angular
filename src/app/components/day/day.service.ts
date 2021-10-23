@@ -7,7 +7,7 @@ import { BaseOnMonthType, BaseOnWeekType, Day, DayType } from "./day.model";
 @Injectable()
 export class DayService implements IExpression {
     dayModel: Day;
-    daysList : Array<string> = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    daysList: Array<string> = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     constructor(private stringService: StringService) {
         this.dayModel = new Day();
     }
@@ -81,6 +81,37 @@ export class DayService implements IExpression {
         return [boWeekExp, boMonthExp];
     }
 
+    expressionValidation(preCronExpressionPattern: string, newCronExpressionPattern: string): string {
+        let preCronExpressionPatternArray = preCronExpressionPattern.split(" ");
+        let newCronExpressionPatternArray = newCronExpressionPattern.split(" ");
+
+        let dayOfWeekRegex: string = this.stringService.getRegexItem(newCronExpressionPattern, RegexItemsIndex.DayOfWeek);
+        let dayOfMonthRegex: string = this.stringService.getRegexItem(newCronExpressionPattern, RegexItemsIndex.DayOfMonth);
+
+        let isDayOfWeekChanged = preCronExpressionPatternArray[RegexItemsIndex.DayOfWeek] !== newCronExpressionPatternArray[RegexItemsIndex.DayOfWeek];
+        let isDayOfMonthChanged = preCronExpressionPatternArray[RegexItemsIndex.DayOfMonth] !== newCronExpressionPatternArray[RegexItemsIndex.DayOfMonth];
+
+        let isBasedOnWeek = dayOfWeekRegex !== "*" && dayOfWeekRegex !== "?";
+        let isBasedOnMonth = dayOfMonthRegex !== "?";
+
+        if (isDayOfWeekChanged && isBasedOnMonth) {
+            newCronExpressionPatternArray[RegexItemsIndex.DayOfMonth] = "?";
+            return newCronExpressionPatternArray.join(" ");
+        } else if(isDayOfWeekChanged && !isBasedOnWeek) {
+            newCronExpressionPatternArray[RegexItemsIndex.DayOfMonth] = "*";
+            return newCronExpressionPatternArray.join(" ");
+        }
+
+        if (isDayOfMonthChanged && isBasedOnWeek) {
+            newCronExpressionPatternArray[RegexItemsIndex.DayOfWeek] = "?";
+            return newCronExpressionPatternArray.join(" ");
+        } else if(isDayOfMonthChanged && !isBasedOnMonth){
+            newCronExpressionPatternArray[RegexItemsIndex.DayOfWeek] = "*";
+            return newCronExpressionPatternArray.join(" ");
+        }
+
+        return newCronExpressionPattern
+    }
 
     reversExpression(cronExpressionPattern: string): void {
         this.dayModel = new Day();
@@ -101,52 +132,55 @@ export class DayService implements IExpression {
             return;
         }
 
-        if(isBasedOnMonth){
+        if (isBasedOnMonth) {
             this.dayModel.type = DayType.BOMonth;
             this.reversExpressionBasedOnMonth(dayOfMonthRegex);
             return;
         }
     }
 
-    reversExpressionBasedOnWeek(regex: string){
+    reversExpressionBasedOnWeek(regex: string): void {
+
+
+
         // **Regex pattern to check id custom or not**
         const regexPattern: RegExp = new RegExp('^[0-9]L$');
         let isCustom: boolean = !regexPattern.test(regex);
         if (!isCustom) {
-          this.dayModel.baseOnWeek.type = BaseOnWeekType.Last
-          this.dayModel.baseOnWeek.last.day = parseInt(regex[0]);
-          return;
+            this.dayModel.baseOnWeek.type = BaseOnWeekType.Last
+            this.dayModel.baseOnWeek.last.day = parseInt(regex[0]);
+            return;
         }
 
         this.dayModel.baseOnWeek.type = BaseOnWeekType.Custom;
-        
+
         let intervalData = this.stringService.getIntervalCronData(regex);
         let hasIntervalItems = intervalData !== undefined;
-        if(hasIntervalItems){
-          this.dayModel.baseOnWeek.custom.repeat.isRepeat = true;
-          this.dayModel.baseOnWeek.custom.repeat.interval = intervalData?.interval as number;
-          this.dayModel.baseOnWeek.custom.repeat.startAt = intervalData?.startAt as number;
+        if (hasIntervalItems) {
+            this.dayModel.baseOnWeek.custom.repeat.isRepeat = true;
+            this.dayModel.baseOnWeek.custom.repeat.interval = intervalData?.interval as number;
+            this.dayModel.baseOnWeek.custom.repeat.startAt = intervalData?.startAt as number;
         }
-    
+
         let specificData = this.stringService.getSpecificCronData(regex, this.daysList);
         let hasSpecificItems = specificData !== undefined;
-        if(hasSpecificItems){
-          this.dayModel.baseOnWeek.custom.specific.isSpecefic = true;
-          this.dayModel.baseOnWeek.custom.specific.values = specificData as Array<DropDownItem>;
+        if (hasSpecificItems) {
+            this.dayModel.baseOnWeek.custom.specific.isSpecefic = true;
+            this.dayModel.baseOnWeek.custom.specific.values = specificData as Array<DropDownItem>;
         }
-    
+
         let dayOfMonthData = this.stringService.getDayOfMonthCronData(regex);
         let hasDayOfMonthDataItem = dayOfMonthData !== undefined;
-        if(hasDayOfMonthDataItem){
-          this.dayModel.baseOnWeek.custom.dayOfMonth.isDayOfMonth = true;
-          this.dayModel.baseOnWeek.custom.dayOfMonth.day = dayOfMonthData?.day as number;
-          this.dayModel.baseOnWeek.custom.dayOfMonth.xst = dayOfMonthData?.xst as number;
+        if (hasDayOfMonthDataItem) {
+            this.dayModel.baseOnWeek.custom.dayOfMonth.isDayOfMonth = true;
+            this.dayModel.baseOnWeek.custom.dayOfMonth.day = dayOfMonthData?.day as number;
+            this.dayModel.baseOnWeek.custom.dayOfMonth.xst = dayOfMonthData?.xst as number;
         }
     }
 
-    reversExpressionBasedOnMonth(regex: string){
+    reversExpressionBasedOnMonth(regex: string) {
         let isLastDayOfMonth = regex == "L";
-        if(isLastDayOfMonth) {
+        if (isLastDayOfMonth) {
             this.dayModel.baseOnMonth.type = BaseOnMonthType.Last;
             return;
         }
@@ -155,26 +189,26 @@ export class DayService implements IExpression {
         const regexPattern: RegExp = new RegExp('^L-[0-9]+$');
         let isCustom: boolean = !regexPattern.test(regex);
         if (!isCustom) {
-          this.dayModel.baseOnMonth.type = BaseOnMonthType.Before
-          this.dayModel.baseOnMonth.before = parseInt(regex.substr(2));
-          return;
+            this.dayModel.baseOnMonth.type = BaseOnMonthType.Before
+            this.dayModel.baseOnMonth.before = parseInt(regex.substr(2));
+            return;
         }
 
         this.dayModel.baseOnMonth.type = BaseOnMonthType.Custom;
 
         let intervalData = this.stringService.getIntervalCronData(regex);
         let hasIntervalItems = intervalData !== undefined;
-        if(hasIntervalItems){
-          this.dayModel.baseOnMonth.custom.repeat.isRepeat = true;
-          this.dayModel.baseOnMonth.custom.repeat.interval = intervalData?.interval as number;
-          this.dayModel.baseOnMonth.custom.repeat.startAt = intervalData?.startAt as number;
+        if (hasIntervalItems) {
+            this.dayModel.baseOnMonth.custom.repeat.isRepeat = true;
+            this.dayModel.baseOnMonth.custom.repeat.interval = intervalData?.interval as number;
+            this.dayModel.baseOnMonth.custom.repeat.startAt = intervalData?.startAt as number;
         }
 
         let specificData = this.stringService.getSpecificCronData(regex, this.daysList);
         let hasSpecificItems = specificData !== undefined;
-        if(hasSpecificItems){
-          this.dayModel.baseOnMonth.custom.specific.isSpecefic = true;
-          this.dayModel.baseOnMonth.custom.specific.values = specificData as Array<DropDownItem>;
+        if (hasSpecificItems) {
+            this.dayModel.baseOnMonth.custom.specific.isSpecefic = true;
+            this.dayModel.baseOnMonth.custom.specific.values = specificData as Array<DropDownItem>;
         }
     }
 }
