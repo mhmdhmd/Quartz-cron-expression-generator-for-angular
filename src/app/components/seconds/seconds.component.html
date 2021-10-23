@@ -69,15 +69,17 @@
             />
             <label class="form-check-label" for="flexCheckChecked">
               Specific second(s) (choose one or many)
-              <ng-multiselect-dropdown
-                [placeholder]="'select second(s)'"
-                [settings]="dropdownSettings"
-                [data]="dropdownList"
-                [(ngModel)]="secondsService.secondModel.custom.specific.values"
-                (onSelect)="onItemSelect($event)"
-                (onSelectAll)="onSelectAll($event)">
-              </ng-multiselect-dropdown>
             </label>
+            <ng-multiselect-dropdown
+            [placeholder]="'select second(s)'"
+            [settings]="dropdownSettings"
+            [data]="dropdownList"
+            [(ngModel)]="secondsService.secondModel.custom.specific.values"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)" 
+            [disabled]="!isCustom"
+            >
+            </ng-multiselect-dropdown>
           </div>
           <div class="form-check mt-1">
             <input

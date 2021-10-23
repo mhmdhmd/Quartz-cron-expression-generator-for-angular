@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { IExpression } from 'src/app/shared/iexpression';
-import { Type } from 'src/app/shared/shared.model';
+import { DropDownItem, RegexItemsIndex, Type } from 'src/app/shared/shared.model';
 import { StringService } from 'src/app/shared/string.service';
 import { Month } from './month.model';
 
 @Injectable()
 export class MonthService implements IExpression {
   monthModel: Month;
-
+  monthList : Array<string> = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   constructor(private stringService: StringService) {
     this.monthModel = new Month();
   }
@@ -48,4 +48,41 @@ export class MonthService implements IExpression {
 
     return expression;
   }
+
+  reversExpression(cronExpressionPattern: string): void {
+    this.monthModel = new Month();
+    let regex: string = this.stringService.getRegexItem(cronExpressionPattern, RegexItemsIndex.Month)
+    
+    let isCustom: boolean = regex !== "*";
+    if (!isCustom) {
+      this.monthModel.type = Type.Every;
+      return;
+    }
+    this.monthModel.type = Type.Custom;
+    
+    let intervalData = this.stringService.getIntervalCronData(regex);
+    let hasIntervalItems = intervalData !== undefined;
+    if(hasIntervalItems){
+      this.monthModel.custom.repeat.isRepeat = true;
+      this.monthModel.custom.repeat.interval = intervalData?.interval as number - 1;
+      this.monthModel.custom.repeat.startAt = intervalData?.startAt as number -1;
+    }
+
+    let specificData = this.stringService.getSpecificCronData(regex, this.monthList);
+    let hasSpecificItems = specificData !== undefined;
+    if(hasSpecificItems){
+      this.monthModel.custom.specific.isSpecific = true;
+      this.monthModel.custom.specific.values = specificData as Array<DropDownItem>;
+    }
+
+
+    let rangeData = this.stringService.getRangeCronData(regex);
+    let hasRangeItem = rangeData !== undefined;
+    if(hasRangeItem){
+      this.monthModel.custom.between.isBetween = true;
+      this.monthModel.custom.between.from = rangeData?.from as number - 1;
+      this.monthModel.custom.between.to = rangeData?.to as number - 1;
+    }
+  }
+
 }

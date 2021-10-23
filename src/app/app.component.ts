@@ -34,4 +34,13 @@ export class AppComponent {
     var yearExp = this.yearService.getExpression();
     this.expResult = `${secondsExp} ${minutesExp} ${hoursExp} ${dayExp[1]} ${monthExp} ${dayExp[0]} ${yearExp}`;
   }
+
+  reverseExpression(cronExpressionPattern: string) : void {
+    this.secondsService.reversExpression(cronExpressionPattern);
+    this.minutesService.reversExpression(cronExpressionPattern);
+    this.hoursService.reversExpression(cronExpressionPattern);
+    this.dayService.reversExpression(cronExpressionPattern);
+    this.monthService.reversExpression(cronExpressionPattern);
+    this.yearService.reversExpression(cronExpressionPattern);
+  }
 }

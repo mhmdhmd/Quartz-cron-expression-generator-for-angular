@@ -44,7 +44,7 @@
       <button class="btn btn-success" (click)="onGetModel()">Generate Exp</button>
     </div>
     <div class="col-md-10 mt-3">
-      <input type="text" class="form-control fw-bold fs-4" [ngModel]="expResult">
+      <input type="text" class="form-control fw-bold fs-4" (ngModelChange)="reverseExpression($event)" [ngModel]="expResult">
     </div>
   </div>
 </div>

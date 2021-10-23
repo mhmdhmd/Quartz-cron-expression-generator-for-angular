@@ -16,7 +16,6 @@ export class HoursComponent implements OnInit {
   dropdownSettings : IDropdownSettings = {};
   public zeroTo23: number[] = [];
 
-  isCustom: boolean = false;
   ngOnInit() {
     for(let i=0;i<24;i++){
       this.zeroTo23[i] = i;
@@ -32,15 +31,14 @@ export class HoursComponent implements OnInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
-    this.isCustom = this.getTypeState();
   }
 
   onTypeSelect(event: any){
-    this.isCustom = this.getTypeState();
+    //this.isCustom = this.getTypeState();
   }
 
-  getTypeState(){
-    return this.hoursService.hourModel.type === Type.Every? false: true;
+  get isCustom() : boolean {
+    return this.hoursService.hourModel.type === Type.Every ? false: true;
   }
-
+  
 }
