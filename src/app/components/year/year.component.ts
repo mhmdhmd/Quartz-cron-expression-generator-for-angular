@@ -16,7 +16,6 @@ export class YearComponent implements OnInit {
   dropdownSettings : IDropdownSettings = {};
   public zeroTo99: number[] = [];
 
-  isCustom: boolean = false;
   ngOnInit() {
 
     for(let i=0; i<100; i++){
@@ -34,15 +33,14 @@ export class YearComponent implements OnInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
-    this.isCustom = this.getTypeState();
   }
 
   onTypeSelect(event: any){
-    this.isCustom = this.getTypeState();
+    //this.isCustom = this.getTypeState();
   }
 
-  getTypeState(){
-    return this.yearService.yearModel.type === Type.Every? false: true;
+  get isCustom() : boolean {
+    return this.yearService.yearModel.type === Type.Every ? false: true;
   }
 
   getYearByOffset(offset: number){

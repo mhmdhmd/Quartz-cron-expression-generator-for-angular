@@ -16,7 +16,6 @@ export class MinutesComponent implements OnInit {
   dropdownSettings : IDropdownSettings = {};
   public zeroTo59: number[] = [];
 
-  isCustom: boolean = false;
   ngOnInit() {
     for(let i=0;i<60;i++){
       this.zeroTo59[i] = i;
@@ -32,14 +31,13 @@ export class MinutesComponent implements OnInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
-    this.isCustom = this.getTypeState();
   }
 
   onTypeSelect(event: any){
-    this.isCustom = this.getTypeState();
+    //this.isCustom = this.getTypeState();
   }
 
-  getTypeState(){
-    return this.minutesService.minuteModel.type === Type.Every? false: true;
+  get isCustom() : boolean {
+    return this.minutesService.minuteModel.type === Type.Every ? false: true;
   }
 }

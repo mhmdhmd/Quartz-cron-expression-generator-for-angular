@@ -69,13 +69,15 @@
               />
               <label class="form-check-label" for="flexCheckChecked">
                 Specific year(s) (choose one or many)
-                <ng-multiselect-dropdown
-                  [placeholder]="'select year(s)'"
-                  [settings]="dropdownSettings"
-                  [data]="dropdownList"
-                  [(ngModel)]="yearService.yearModel.custom.specific.values">
-                </ng-multiselect-dropdown>
               </label>
+              <ng-multiselect-dropdown
+              [placeholder]="'select year(s)'"
+              [settings]="dropdownSettings"
+              [data]="dropdownList"
+              [(ngModel)]="yearService.yearModel.custom.specific.values"
+              [disabled]="!isCustom"
+              >
+              </ng-multiselect-dropdown>
             </div>
             <div class="form-check mt-1">
               <input

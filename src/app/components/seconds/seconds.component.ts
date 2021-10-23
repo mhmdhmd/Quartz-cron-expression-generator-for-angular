@@ -16,8 +16,7 @@ export class SecondsComponent implements OnInit{
   dropdownList: DropDownItem[] = [];
   dropdownSettings : IDropdownSettings = {};
   public zeroTo59: number[] = [];
-
-  isCustom: boolean = false;
+  
   ngOnInit() {
     for(let i=0;i<60;i++){
       this.zeroTo59[i] = i;
@@ -33,7 +32,6 @@ export class SecondsComponent implements OnInit{
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
-    this.isCustom = this.getTypeState();
   }
   onItemSelect(item: any) {
     //console.log(item);
@@ -43,14 +41,13 @@ export class SecondsComponent implements OnInit{
   }
 
   onTypeSelect(event: any){
-    this.isCustom = this.getTypeState();
     //console.log(this.secondsService.secondModel);
   }
 
-  getTypeState(){
+  get isCustom() : boolean {
     return this.secondsService.secondModel.type === Type.Every ? false: true;
   }
-
+  
   modelChanged(event: any){
     console.log(this.secondsService.getExpression());
   }

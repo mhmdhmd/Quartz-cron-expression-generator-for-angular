@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Type } from 'src/app/shared/shared.model';
+import { DropDownItem, RegexItemsIndex, Type } from 'src/app/shared/shared.model';
 import { StringService } from 'src/app/shared/string.service';
 import { Year } from './year.model';
 
@@ -46,4 +46,41 @@ export class YearService {
 
     return expression;
   }
+
+  reversExpression(cronExpressionPattern: string): void {
+    this.yearModel = new Year();
+    let regex: string = this.stringService.getRegexItem(cronExpressionPattern, RegexItemsIndex.Year)
+    
+    let isCustom: boolean = regex !== "*";
+    if (!isCustom) {
+      this.yearModel.type = Type.Every;
+      return;
+    }
+    this.yearModel.type = Type.Custom;
+    
+    let intervalData = this.stringService.getIntervalCronData(regex);
+    let hasIntervalItems = intervalData !== undefined;
+    if(hasIntervalItems){
+      this.yearModel.custom.repeat.isRepeat = true;
+      this.yearModel.custom.repeat.interval = intervalData?.interval as number - 1;
+      this.yearModel.custom.repeat.startAt = intervalData?.startAt as number;
+    }
+
+    let specificData = this.stringService.getSpecificCronData(regex);
+    let hasSpecificItems = specificData !== undefined;
+    if(hasSpecificItems){
+      this.yearModel.custom.specific.isSpecific = true;
+      this.yearModel.custom.specific.values = specificData as Array<DropDownItem>;
+    }
+
+
+    let rangeData = this.stringService.getRangeCronData(regex);
+    let hasRangeItem = rangeData !== undefined;
+    if(hasRangeItem){
+      this.yearModel.custom.between.isBetween = true;
+      this.yearModel.custom.between.from = rangeData?.from as number;
+      this.yearModel.custom.between.to = rangeData?.to as number;
+    }
+  }
+
 }
