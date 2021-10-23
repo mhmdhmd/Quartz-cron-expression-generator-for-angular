@@ -3,6 +3,8 @@
 
 Create and manage cron expression for Quartz.Net scheduler.
 
+You can generate the desired result through the elements on the screen and then pressing the 'Generate Exp' key
+You can also type your phrase and view the results on the elements
 
 ## Contributing
 
