@@ -36,6 +36,7 @@ export class AppComponent {
   }
 
   reverseExpression(cronExpressionPattern: string) : void {
+    this.expResult = this.dayService.expressionValidation(this.expResult, cronExpressionPattern);
     this.secondsService.reversExpression(cronExpressionPattern);
     this.minutesService.reversExpression(cronExpressionPattern);
     this.hoursService.reversExpression(cronExpressionPattern);
