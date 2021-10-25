@@ -13,7 +13,7 @@ Contributions are always welcome!
 
 ## Website
 
-https://mhmdhmd.github.io/Quartz.Net-CronExp-Generator/
+https://mhmdhmd.github.io/Quartz-cron-expression-generator-for-angular/
 
 ## Author
 
