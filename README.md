@@ -20,4 +20,5 @@ https://mhmdhmd.github.io/Quartz-cron-expression-generator-for-angular/
 
 - [@mhmdhmd](https://www.github.com/mhmdhmd)
 
+- [@emadecode](https://www.github.com/emadecode)
   
